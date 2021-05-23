@@ -107,12 +107,12 @@ def next_composite(table: PQ) -> int:
 
 def adjust(x: int, table: PQ) -> None:
     n = table[0].number
-    if n <= x:
+    while n <= x:
         xs = table[0].generator
         n_ = next(xs)
         heapq.heappop(table)
         heapq.heappush(table, QueueItem(n_, xs))
-        adjust(x, table)
+        n = table[0].number
 
 
 def sieve_(xs: Iterator[int], table: PQ) -> None:
