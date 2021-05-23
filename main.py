@@ -106,13 +106,10 @@ def next_composite(table: PQ) -> int:
 
 
 def adjust(x: int, table: PQ) -> None:
-    n = table[0].number
-    while n <= x:
+    while next_composite(table) <= x:
         xs = table[0].generator
-        n_ = next(xs)
         heapq.heappop(table)
-        heapq.heappush(table, QueueItem(n_, xs))
-        n = table[0].number
+        heapq.heappush(table, QueueItem(next(xs), xs))
 
 
 def sieve_(xs: Iterator[int], table: PQ) -> None:
@@ -144,7 +141,7 @@ def primes() -> NumberGenerator:
 
 
 def print_first_1000_primes() -> None:
-    print(list(islice(primes(), 1000)))
+    list(islice(primes(), 1000000))
 
 
 if __name__ == "__main__":
