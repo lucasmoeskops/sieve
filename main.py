@@ -141,7 +141,7 @@ def primes() -> NumberGenerator:
 
 
 def print_first_1000_primes() -> None:
-    print(list(islice(primes(), 1000)))
+    list(islice(primes(), 1000000))
 
 
 if __name__ == "__main__":
